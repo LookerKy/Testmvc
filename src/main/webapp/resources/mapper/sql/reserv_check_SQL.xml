@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="check">
+
+	<select id="selectuserReserv" parameterType="String" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    seat_no,reserv_stime,reserv_etime
+			FROM
+			  	blue_seat
+			WHERE
+				studentId= #{studentId}
+		]]>
+	</select>
+	
+</mapper>

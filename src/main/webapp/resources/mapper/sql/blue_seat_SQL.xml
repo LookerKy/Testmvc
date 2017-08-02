@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bseat">
+
+	<select id="selectSeatList" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			  	blue_seat
+		]]>
+	</select>
+	<insert id="insertSeat" parameterType="hashmap">
+		<![CDATA[
+			INSERT 
+			INTO
+			blue_seat(studentId,reservation,reserv_stime,reserv_etime,reserv_wait)
+			VALUES (#{studentId},'1',#{reserv_stime},#{reserv_etime},'0')
+		]]>
+	</insert>
+	<delete id="deleteSeat" parameterType="Integer">
+		<![CDATA[
+			DELETE FROM
+				blue_seat
+			WHERE
+				seat_no= 
+				#{seat_no}
+		]]>
+	</delete>
+	<update id="reservSeat" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				blue_seat
+			SET
+				studentId=#{studentId}, 
+				reservation=1,
+				reserv_stime=#{reserv_stime},
+				reserv_etime=#{reserv_etime}
+			WHERE
+				seat_no=#{seat_no}
+		]]>
+	</update><update id="cancleReserv" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				blue_seat
+			SET
+				studentId=null, 
+				reservation=0,
+				reserv_stime=null,
+				reserv_etime=null
+			WHERE
+				seat_no=#{seat_no}
+		]]>
+	</update>
+</mapper>
